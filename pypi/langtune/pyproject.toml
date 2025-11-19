@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langtune"
+version = "0.1.0"
+description = "Langtune — fine-tuning text models (Python package)"
+readme = "README.md"
+authors = [{name = "Pritesh", email = "you@example.com"}]
+license = {text = "MIT"}
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = []
+[tool.setuptools.packages.find]
+where = ["langtune"]
