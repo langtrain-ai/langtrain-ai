@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "text": "The quick brown fox jumps over the lazy dog", "label": "positive" },
+    { "text": "Machine learning is transforming artificial intelligence", "label": "positive" },
+    { "text": "LoRA enables efficient fine-tuning of large models", "label": "positive" },
+    { "text": "Natural language processing has many applications", "label": "positive" },
+    { "text": "Deep learning requires substantial computational resources", "label": "neutral" },
+    { "text": "Transformers revolutionized NLP research", "label": "positive" },
+    { "text": "Fine-tuning adapts models to specific tasks", "label": "positive" },
+    { "text": "Parameter-efficient methods reduce training costs", "label": "positive" },
+    { "text": "Language models can generate coherent text", "label": "positive" },
+    { "text": "Computer vision and NLP are converging", "label": "neutral" }
+  ]
+}

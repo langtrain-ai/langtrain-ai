@@ -1,0 +1,31 @@
+{
+  "name": "@langtrain/langvision",
+  "version": "1.0.0",
+  "description": "Vision utilities and dataset transforms for image-to-text workflows",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest",
+    "lint": "echo 'Linting langvision'",
+    "clean": "rm -rf dist *.tsbuildinfo"
+  },
+  "keywords": [
+    "vision",
+    "image-processing",
+    "augmentation",
+    "dataset"
+  ],
+  "author": "Pritesh Raj",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  }
+}

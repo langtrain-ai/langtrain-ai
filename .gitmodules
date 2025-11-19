@@ -1,0 +1,6 @@
+[submodule "pypi/langtune"]
+	path = pypi/langtune
+	url = https://github.com/langtrain-ai/langtune.git
+[submodule "pypi/langvision"]
+	path = pypi/langvision
+	url = https://github.com/langtrain-ai/langvision.git
