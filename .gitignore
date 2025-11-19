@@ -14,3 +14,4 @@ coverage/
 *.swo
 *~
 .nyc_output/
+*.tgz

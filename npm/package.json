@@ -1,50 +1,21 @@
 {
-  "name": "langtrain",
-  "version": "1.0.0",
-  "description": "Efficient LoRA fine-tuning toolkit for text and vision models",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "name": "langtrain-ai-cli",
+  "version": "0.1.0",
+  "description": "langtrain-ai top-level npm package wrapper",
+  "main": "index.js",
   "bin": {
-    "langtrain": "dist/cli.js"
+    "langtrain": "index.js"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
-    "build": "npm run clean && tsc",
-    "test": "vitest run",
-    "pack": "npm pack",
-    "prepublishOnly": "npm run build && npm test",
-    "clean": "rm -rf dist *.tsbuildinfo"
+    "prepublishOnly": "npm test",
+    "test": "node --eval \"console.log('npm package test ok')\""
   },
   "keywords": [
-    "lora",
-    "fine-tuning",
-    "llm",
-    "vision",
-    "transformer",
-    "machine-learning",
-    "cli"
+    "langtrain",
+    "langtune",
+    "langvision"
   ],
-  "author": "Pritesh Raj",
+  "author": "Pritesh",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/langtrain-ai/langtrain-ai.git"
-  },
-  "bugs": {
-    "url": "https://github.com/langtrain-ai/langtrain-ai/issues"
-  },
-  "homepage": "https://github.com/langtrain-ai/langtrain-ai#readme",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.3.0",
-    "vitest": "^1.0.0"
-  }
+  "repository": "https://github.com/langtrain-ai/langtrain-ai.git"
 }

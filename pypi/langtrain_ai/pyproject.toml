@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0","wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langtrain-ai"
+version = "0.1.0"
+description = "langtrain-ai top package, coordinates langtune + langvision"
+readme = "README.md"
+authors = [{name = "Pritesh"}]
+dependencies = ["langtune>=0.1.0", "langvision>=0.1.0"]
+[tool.setuptools.packages.find]
+where = ["langtrain_ai"]

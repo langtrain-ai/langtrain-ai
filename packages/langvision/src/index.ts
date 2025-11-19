@@ -1,4 +1,11 @@
-export { loadImageDataset, ImageDataset } from './dataset';
-export { createManifest, ManifestOptions } from './manifest';
-export { augmentImage, resizeImage, AugmentationOptions } from './transforms';
-export * from './types';
+/**
+ * Minimal image->manifest sample
+ */
+
+import fs from "fs";
+
+export function sampleVisionToManifest(images: string[], outFile: string) {
+    const manifest = images.map((p) => ({ image: p, caption: "PLACEHOLDER_CAPTION" }));
+    fs.writeFileSync(outFile, JSON.stringify({ items: manifest }, null, 2));
+    return outFile;
+}

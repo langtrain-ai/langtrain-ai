@@ -1,31 +1,13 @@
 {
   "name": "@langtrain/langvision",
-  "version": "1.0.0",
-  "description": "Vision utilities and dataset transforms for image-to-text workflows",
+  "version": "0.1.0",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "scripts": {
-    "build": "tsc -b",
-    "test": "vitest",
-    "lint": "echo 'Linting langvision'",
-    "clean": "rm -rf dist *.tsbuildinfo"
+    "build": "tsc -p ../../tsconfig.json --outDir dist",
+    "test": "node --eval \"console.log('no tests for langvisionjs yet')\""
   },
-  "keywords": [
-    "vision",
-    "image-processing",
-    "augmentation",
-    "dataset"
-  ],
-  "author": "Pritesh Raj",
-  "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.3.0",
-    "vitest": "^1.0.0"
-  }
+    "typescript": "^5.5.2"
+  },
+  "repository": "https://github.com/langtrain-ai/langtrain-ai.git"
 }

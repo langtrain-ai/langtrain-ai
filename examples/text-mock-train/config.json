@@ -1,0 +1,5 @@
+{
+  "data": "data.csv",
+  "steps": 10,
+  "learning_rate": 0.001
+}

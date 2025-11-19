@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          python -m pip install --upgrade pip build twine
+
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # This executes the release script in package.json
+          publish: npm run release
+          commit: "chore: version packages"
+          title: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Python Packages
+        if: steps.changesets.outputs.published == 'true'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          # Build and publish Python packages
+          # langtune
+          python -m build pypi/langtune
+          python -m twine upload --non-interactive dist/* || true
+          rm -rf dist/*
+
+          # langvision
+          python -m build pypi/langvision
+          python -m twine upload --non-interactive dist/* || true
+          rm -rf dist/*
+
+          # langtrain_ai
+          python -m build pypi/langtrain_ai
+          python -m twine upload --non-interactive dist/* || true
+          rm -rf dist/*

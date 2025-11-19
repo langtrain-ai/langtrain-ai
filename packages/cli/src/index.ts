@@ -1,78 +1,25 @@
 #!/usr/bin/env node
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
-import { parseArgs } from './args';
-import { initCommand } from './commands/init';
-import { prepareCommand } from './commands/prepare';
-import { tuneCommand } from './commands/tune';
-import { publishCommand } from './commands/publish';
-import { testCommand } from './commands/test';
-
-async function main() {
-  const args = parseArgs();
-
-  if (args.help || !args.command) {
-    printHelp();
-    process.exit(0);
-  }
-
-  if (args.version) {
-    console.log('langtrain v1.0.0');
-    process.exit(0);
-  }
-
-  try {
-    switch (args.command) {
-      case 'init':
-        await initCommand(args);
-        break;
-      case 'prepare':
-        await prepareCommand(args);
-        break;
-      case 'tune':
-        await tuneCommand(args);
-        break;
-      case 'publish':
-        await publishCommand(args);
-        break;
-      case 'test':
-        await testCommand(args);
-        break;
-      default:
-        console.error(`Unknown command: ${args.command}`);
-        printHelp();
-        process.exit(1);
-    }
-  } catch (error) {
-    console.error('Error:', error instanceof Error ? error.message : error);
-    process.exit(1);
-  }
-}
-
-function printHelp() {
-  console.log(`
-Langtrain CLI - Efficient LoRA fine-tuning toolkit
-
-Usage: langtrain <command> [options]
-
-Commands:
-  init <name>              Initialize new project
-  prepare                  Prepare dataset for training
-  tune --config <path>     Run fine-tuning with config
-  publish                  Publish trained model
-  test --dry-run           Run in test mode
-
-Options:
-  --help                   Show help
-  --version                Show version
-  --dry-run                Run in test mode without making changes
-
-Examples:
-  langtrain init my-project
-  langtrain prepare --input data.csv --output manifest.jsonl
-  langtrain tune --config config.yaml
-  langtrain publish --checkpoint ./checkpoints/final.json
-  langtrain test --dry-run
-`);
-}
-
-main();
+yargs(hideBin(process.argv))
+  .scriptName("langtrain")
+  .usage("$0 <cmd> [args]")
+  .command("init", "Initialize project", () => { }, async (argv) => {
+    console.log("langtrain init");
+  })
+  .command("prepare", "Prepare dataset", () => { }, async (argv) => {
+    console.log("prepare called");
+  })
+  .command("tune", "Run tune", (y) => y.option("config", { type: "string", demandOption: true }), async (argv) => {
+    console.log("tune with config", (argv as any).config);
+  })
+  .command("publish", "Publish packages (--dry-run)", (y) => y.option("dry-run", { type: "boolean", default: false }), async (argv) => {
+    console.log("publish requested, dry-run:", (argv as any)["dry-run"]);
+  })
+  .command("test", "Run tests", () => { }, async () => {
+    console.log("test");
+  })
+  .option("dry-run", { type: "boolean", default: false })
+  .help()
+  .argv;

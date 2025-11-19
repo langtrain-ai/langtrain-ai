@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "image": "img1.jpg",
+      "caption": "A cat sitting on a mat"
+    },
+    {
+      "image": "img2.jpg",
+      "caption": "A dog playing with a ball"
+    }
+  ]
+}
