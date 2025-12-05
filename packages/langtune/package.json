@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -p ../../tsconfig.json --outDir dist",
+    "build": "npx tsc -p ../../tsconfig.json --outDir dist",
     "test": "node --eval \"console.log('no tests for langtunejs yet')\""
   },
   "devDependencies": {
