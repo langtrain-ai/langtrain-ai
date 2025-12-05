@@ -19,13 +19,12 @@ jobs:
         run: npm ci
       - name: Build JS packages
         run: npm run build
-      - name: Publish npm package (dry-run)
+      - name: Publish npm package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd npm
-          npm pack
-          # Real publish on tag can be enabled by replacing the line below with `npm publish --access public`
+          npm publish --access public
       - name: Publish Python wheels to PyPI
         env:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
